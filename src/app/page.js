@@ -7,6 +7,14 @@ const languagesOptions = [
   { value: "en", label: "English" },
   { value: "fr", label: "French" },
   { value: "es", label: "Spanish" },
+  { value: "de", label: "German" },
+  { value: "it", label: "Italian" },
+  { value: "pt", label: "Portuguese" },
+  { value: "ru", label: "Russian" },
+  { value: "ar", label: "Arabic" },
+  { value: "hi", label: "Hindi" },
+  { value: "ja", label: "Japanese" },
+  { value: "ko", label: "Korean" },
 ];
 
 export default function Home() {
@@ -55,7 +63,8 @@ export default function Home() {
             <form
               className="w-full"
               action={async (formData) => {
-                const result = await translate(formData);
+                const result = await translate(formData) ;
+                setTranslatedText(result.translation);
                 console.log(result);
               }}
             >
