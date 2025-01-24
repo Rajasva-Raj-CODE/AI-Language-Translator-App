@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Dropdown } from "./components/dropdown";
 import { translate } from "@/app/actions/translate";
+import  VoiceRecorder  from "@/app/components/voice-recorder"
 
 const languagesOptions = [
   { value: "en", label: "English" },
@@ -109,7 +110,7 @@ export default function Home() {
                 >
                   translate
                 </button>
-                {/* {languageFrom === "en" && <VoiceRecorder handleSetText={handleInputSet} />} */}
+                 <VoiceRecorder/>
               </div>
             </form>
           </div>
