@@ -2,20 +2,12 @@
 import React, { useState } from "react";
 import { Dropdown } from "./components/dropdown";
 import { translate } from "@/app/actions/translate";
-import  VoiceRecorder  from "@/app/components/voice-recorder"
+import VoiceRecorder from "@/app/components/voice-recorder";
 
 const languagesOptions = [
   { value: "en", label: "English" },
   { value: "fr", label: "French" },
   { value: "es", label: "Spanish" },
-  { value: "de", label: "German" },
-  { value: "it", label: "Italian" },
-  { value: "pt", label: "Portuguese" },
-  { value: "ru", label: "Russian" },
-  { value: "ar", label: "Arabic" },
-  { value: "hi", label: "Hindi" },
-  { value: "ja", label: "Japanese" },
-  { value: "ko", label: "Korean" },
 ];
 
 export default function Home() {
@@ -37,15 +29,15 @@ export default function Home() {
     setInputText(newText);
   };
 
-  // const handleInputSet = async (value) => {
-  //   setInputText(value);
-  //   const formData = new FormData();
-  //   formData.append("text", value);
-  //   formData.append("languageTo", languageTo);
-  //   formData.append("languageFrom", languageFrom);
-  //   const translation = await translate(formData);
-  //   setTranslatedText(translation.translation);
-  // };
+  const handleInputSet = async (value) => {
+    setInputText(value);
+    const formData = new FormData();
+    formData.append("text", value);
+    formData.append("languageTo", languageTo);
+    formData.append("languageFrom", languageFrom);
+    const translation = await translate(formData);
+    setTranslatedText(translation.translation);
+  };
 
   return (
     <section className="py-20 px-4 sm:px-6 max-w-7xl mx-auto">
@@ -64,7 +56,7 @@ export default function Home() {
             <form
               className="w-full"
               action={async (formData) => {
-                const result = await translate(formData) ;
+                const result = await translate(formData);
                 setTranslatedText(result.translation);
                 console.log(result);
               }}
@@ -101,7 +93,6 @@ export default function Home() {
                     readOnly
                   />
                 </div>
-
               </div>
               <div className="flex flex-row items-center gap-2 h-16">
                 <button
@@ -110,7 +101,7 @@ export default function Home() {
                 >
                   translate
                 </button>
-                 <VoiceRecorder/>
+                {languageFrom === "en" && <VoiceRecorder handleSetText={handleInputSet} />}
               </div>
             </form>
           </div>
