@@ -3,11 +3,12 @@ import React, { useState } from "react";
 import { Dropdown } from "./components/dropdown";
 import { translate } from "@/app/actions/translate";
 import VoiceRecorder from "@/app/components/voice-recorder";
+import SaveBtn from "@/app/components/save-translation-btn";
 
 const languagesOptions = [
   { value: "en", label: "English" },
-  { value: "fr", label: "French" },
   { value: "es", label: "Spanish" },
+  { value: "fr", label: "French" },
 ];
 
 export default function Home() {
@@ -86,6 +87,7 @@ export default function Home() {
                     options={languagesOptions}
                     onChange={handleLanguageToChange}
                   />
+                  <SaveBtn />
                   <textarea
                     placeholder="Translated text will appear here"
                     className="border border-slate-800 rounded-md p-4 lg:w-[400px] text-black"
